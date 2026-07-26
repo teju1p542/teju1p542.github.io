@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOMY Driver Reported OTR Incident</title>
+    <style>
+        :root {
+            --primary-navy: #14213d;
+            --accent-orange: #ff9900;
+            --bg-light: #f4f6f8;
+            --border-color: #cccccc;
+            --text-dark: #222222;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 30px 15px;
+        }
+
+        .form-container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            border-top: 6px solid var(--primary-navy);
+        }
+
+        h1 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            color: var(--primary-navy);
+        }
+
+        p.instruction {
+            margin: 0 0 25px 0;
+            color: #666666;
+            font-size: 14px;
+        }
+
+        fieldset {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fcfcfc;
+        }
+
+        legend {
+            font-weight: bold;
+            color: var(--primary-navy);
+            padding: 0 8px;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group.row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-orange);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-container {
+            text-align: right;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary-navy);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #243b6b;
+        }
+
+        button[type="reset"] {
+            background-color: #777777;
+            margin-right: 10px;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #555555;
+        }
+		textarea {
+				overflow: hidden;
+}
+		<style>
+        textarea {
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            resize: none; /* Prevents manual dragging */
+            overflow-y: hidden; /* Hides the scrollbar */
+        }
+    </style>
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>TOMY Driver Reported OTR Incident:</h1>
+        <p class="instruction">Collect all the required information below.</p>
+
+        <form id="incidentForm" onsubmit="handleFormSubmit(event)">
+            
+        
+    <textarea id="auto-box">
+- How are you doing?
+- Login: 
+- Name: 
+- Phone number: 
+- Location:
+- Location Coordinates: 
+- Date: 
+- Time: 
+- TAM Login: 
+- What is your TOM tenure? (Transportation Operation Management) Duration in the TOM team?
+
+- May I know if you are NOA trained? (Nodal On boarding Academy).
+
+- Are you into back half or front half nights or back half or front half days?
+
+- How long into your shift did this incident occur?
+
+- Could you please explain the incident?
+
+
+- VRID: 
+- Source:
+- Destination:
+- Vehicles Involved:
+
+
+- Is a Day Cab or Sleeper Cab?
+ (Moving / Stationary): If moving, source and destination. If stationary, location.
+
+- In-case(3P Trailer):
+ - SCAC:  
+ - Trailer ID: 
+ - Source and destination of vehicles:
+
+ - Loaded / Unloaded:
+
+ - Any damage? Which side?
+
+- Vehicles drive-able?
+
+- Will the driver continue the route?
+
+- Based on the incident, are there claimants? If yes, how many?
+- Was the Claimant injured?
+  - Yes: Was he transported to the Hospital via ambulance?
+    - Yes: Please provide the name of the hospital.
+- Was the Claimant's vehicle involved? 
+  - Yes: Are there any damages?
+  - May I get the make & model details, Color of the vehicle, damages if any.
+
+- Was the incident reported to LEA? Name of LEA.
+- Is there a report number?
+
+In Case of Towing:
+May I have the towing company name, phone number, and location address?
+
+- Is there a Hazmat leak, such as coolant, fuel, or radiator?
+  - If yes- How many gallons of liquid were leaked?
+==============================================================================================
+Station: ATL12  Call Elaine on 856-448-2433 and inform Her about the claim.
+
+</textarea>
+
+    <script>
+        // Select the textarea element
+        const textarea = document.getElementById('auto-box');
+        
+        // Set the height to match the internal content scroll height
+        textarea.style.height = textarea.scrollHeight + 'px';
+    </script>    
+		
+
+
+
+
+      
+
+
+
+            <!-- BUTTONS -->
+            <div class="btn-container">
+                <!-- <button type="reset">Clear Form</button> -->
+                <button type="submit">Print / Save Claim</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Instantly triggers a clean browser print menu to save as PDF or paper copy
+            window.print();
+        }
+    </script>
+
+</body>
+</html>
+
+
