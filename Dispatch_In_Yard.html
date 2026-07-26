@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatch Reported In-Yard Incident</title>
+    <style>
+        :root {
+            --primary-navy: #14213d;
+            --accent-orange: #ff9900;
+            --bg-light: #f4f6f8;
+            --border-color: #cccccc;
+            --text-dark: #222222;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 30px 15px;
+        }
+
+        .form-container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            border-top: 6px solid var(--primary-navy);
+        }
+
+        h1 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            color: var(--primary-navy);
+        }
+
+        p.instruction {
+            margin: 0 0 25px 0;
+            color: #666666;
+            font-size: 14px;
+        }
+
+        fieldset {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fcfcfc;
+        }
+
+        legend {
+            font-weight: bold;
+            color: var(--primary-navy);
+            padding: 0 8px;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group.row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-orange);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-container {
+            text-align: right;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary-navy);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #243b6b;
+        }
+
+        button[type="reset"] {
+            background-color: #777777;
+            margin-right: 10px;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #555555;
+        }
+		textarea {
+				overflow: hidden;
+}
+		<style>
+        textarea {
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            resize: none; /* Prevents manual dragging */
+            overflow-y: hidden; /* Hides the scrollbar */
+        }
+    </style>
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Dispatch Reported In-Yard Incident:</h1>
+        <p class="instruction">Collect all the required information below.</p>
+
+        <form id="incidentForm" onsubmit="handleFormSubmit(event)">
+            
+        
+    <textarea id="auto-box">
+Dispatch:
+- Name: 
+- Phone number: 
+- Email: 
+- Date: 
+- Time:
+- SCAC:
+- USDOT:
+- Company Name: 
+
+Driver:
+- Name: 
+- Phone number: 
+- Email:
+
+- Could you please explain the incident?
+
+- Vehicles Involved:
+ (If Amazon Tractor, ask whether it is a day Cab or Sleeper Cab)
+
+
+
+ - Any damage? Which side?
+
+ - Source and destination of vehicles:
+
+ - Loaded / Unloaded:
+
+ - Tagged for repairs:
+
+- Vehicles drive-able?
+
+- May I have the VRID: 
+
+- May I know if the Driver was injured?
+   - If yes:
+     - Was the driver given medication and sent to Am Care?
+     - What are the injuries?
+     - Are they major or minor?
+     - If Major- Was he transported to a hospital?
+       - If yes- What is the hospital name?
+    - What is the pain level on a scale of 1 to 10?
+
+- Is there a Hazmat leak, such as coolant, fuel, or radiator?
+  - If yes- How many gallons of liquid were leaked?
+
+- Is the Driver still in the yard or did he continue on the route?
+- If he is continuing on the route, where is heading to?
+- Any Claimant Involved in the Incident?
+</textarea>
+
+    <script>
+        // Select the textarea element
+        const textarea = document.getElementById('auto-box');
+        
+        // Set the height to match the internal content scroll height
+        textarea.style.height = textarea.scrollHeight + 'px';
+    </script>    
+		
+
+
+
+
+      
+
+
+
+            <!-- BUTTONS -->
+            <div class="btn-container">
+                <!-- <button type="reset">Clear Form</button> -->
+                <button type="submit">Print / Save Claim</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Instantly triggers a clean browser print menu to save as PDF or paper copy
+            window.print();
+        }
+    </script>
+
+</body>
+</html>
+
+
