@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARC Claims Dashboard</title>
+    <style>
+        :root {
+            --primary-blue: #14213d;
+            --amazon-orange: #ff9900;
+            --slate-gray: #e5e5e5;
+            --text-dark: #000000;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f6f8;
+            color: var(--text-dark);
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0 0 2px 0;
+            font-size: 20px;
+        }
+
+        .search-container {
+			padding-top: 0px;
+			padding-bottom: 0px;
+            width: 100%;
+        }
+
+        #filterInput {
+            width: 100%;
+            padding: 12px;
+            font-size: 12px;
+            border: 2px solid var(--slate-gray);
+            border-radius: 6px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        #filterInput:focus {
+            border-color: var(--amazon-orange);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .category-card.external {
+            border-top-color: var(--amazon-orange);
+        }
+
+        .category-card h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--slate-gray);
+            padding-bottom: 8px;
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .link-item {
+            margin-bottom: 15px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .link-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .link-item a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .link-item a:hover {
+            text-decoration: underline;
+        }
+
+        .link-desc {
+            font-size: 12px;
+            color: #555;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-style: italic;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ARC Claims Dashboard</h1>
+        <div class="search-container">
+            <input type="text" id="filterInput" placeholder="Type a keyword to filter links instantly (e.g., Hostler, trailer, cab)..." onkeyup="filterLinks()">
+        </div>
+    </header>
+
+    <main class="dashboard-grid" id="dashboardGrid">
+        
+        <!-- CATEGORY 1 -->
+        <div class="category-card">
+            <h2>Amazon Assests</h2>
+			
+            <ul class="link-list">
+					<a>SCAC: AZNG or TOMY | USDOT: 2881058 | Carrier Name: Amazon Logistics Inc</a><br><br>
+                    <a>Hostler</a>
+					<p class="link-desc">Unit Number:</p>
+					<a>Amazon Day Cab & Amazon Sleeper Cab (Tractor)</a>
+					<p class="link-desc">License Plate:</p>
+					<p class="link-desc">Unit Number:</p>
+					<a>Box Truck</a>
+					<p class="link-desc">Box Truck ID:</p>
+					<p class="link-desc">License Plate:</p>
+					<a>Trailer</a>
+					<p class="link-desc">Trailer ID:</p>
+					<a>Container</a>
+					<p class="link-desc">Container ID:</p>
+					<p class="link-desc">Chassis ID:</p>
+				
+				<li class="link-item">
+                    
+                </li>
+            </ul>
+        </div>
+        <!-- CATEGORY 2 -->
+        <div class="category-card">
+            <h2>Third Party Assests</h2>
+			<ul class="link-list">
+					<br><br>
+                    <a>Tractor</a>
+					<p class="link-desc">Tractor ID:</p>
+					<p class="link-desc">License Plate:</p>
+					<a>Trailer</a>
+					<p class="link-desc">Trailer ID:</p>
+					<a>Container</a>
+					<p class="link-desc">Container ID:</p>
+					<p class="link-desc">Chassis ID:</p>
+					<a>Chassis</a>
+					<p class="link-desc">Chassis ID:</p>
+				
+				<li class="link-item">
+                    
+                </li>
+            </ul>
+        </div>
+
+        <div class="no-results" id="noResults">No matching tracking links found.</div>
+    </main>
+
+    <script>
+        function filterLinks() {
+            var input = document.getElementById('filterInput');
+            var filter = input.value.toLowerCase();
+            var grid = document.getElementById('dashboardGrid');
+            var items = grid.getElementsByClassName('link-item');
+            var cards = grid.getElementsByClassName('category-card');
+            var visibleItemsInGrid = 0;
+
+            // Loop through all link items to see if they match the filter text
+            for (var i = 0; i < items.length; i++) {
+                var txtValue = items[i].textContent || items[i].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    items[i].style.display = "";
+                    visibleItemsInGrid++;
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+
+            // Adjust card visibility based on whether they contain visible links
+            for (var j = 0; j < cards.length; j++) {
+                var cardItems = cards[j].getElementsByClassName('link-item');
+                var visibleItemsInCard = 0;
+                for (var k = 0; k < cardItems.length; k++) {
+                    if (cardItems[k].style.display !== "none") {
+                        visibleItemsInCard++;
+                    }
+                }
+                if (visibleItemsInCard === 0 && filter !== "") {
+                    cards[j].style.display = "none";
+                } else {
+                    cards[j].style.display = "";
+                }
+            }
+
+            // Show no results notice if everything is hidden
+            var noResults = document.getElementById('noResults');
+            if (visibleItemsInGrid === 0 && filter !== "") {
+                noResults.style.display = "block";
+            } else {
+                noResults.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
